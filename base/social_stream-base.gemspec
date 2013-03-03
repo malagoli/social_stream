@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   # Activity and Relation hierarchies
   s.add_runtime_dependency('ancestry', '~> 1.2.3')
   # SQL foreign keys
-  s.add_runtime_dependency('foreigner', '~> 1.1.1')
+  s.add_runtime_dependency('foreigner')
   # Authentication
   s.add_runtime_dependency('devise', '~> 2.2.3')
   # CRUD controllers
@@ -39,13 +39,13 @@ Gem::Specification.new do |s|
   # Authorization
   s.add_runtime_dependency('cancan', '~> 1.6.7')
   # Pagination
-  s.add_runtime_dependency('kaminari', '~> 0.13.0')
+  s.add_runtime_dependency('kaminari')
   # OAuth client
   s.add_runtime_dependency('omniauth-socialstream', '~> 0.1.2')
   s.add_runtime_dependency('omniauth-facebook','~> 1.4.1')
   s.add_runtime_dependency('omniauth-linkedin','~> 0.0.6')
   # Messages
-  s.add_runtime_dependency('mailboxer','~> 0.6.5')
+  s.add_runtime_dependency('mailboxer')
   # Tagging
   s.add_runtime_dependency('acts-as-taggable-on','~> 2.2.2')
   # Background jobs
