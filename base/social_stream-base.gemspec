@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   # CRUD controllers
   s.add_runtime_dependency('inherited_resources', '~> 1.3.0')
   # Slug generation
-  s.add_runtime_dependency('stringex', '~> 1.5.1')
+  #s.add_runtime_dependency('stringex', '~> 1.5.1')
   # Avatar attachments
   s.add_runtime_dependency('avatars_for_rails', '~> 0.2.8')
   # jQuery
@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
   # Modernizr.js javascript library
   s.add_runtime_dependency('modernizr-rails', '~> 2.0.6')
   # Sphinx search engine
-  s.add_runtime_dependency('thinking-sphinx', '~> 2.0.8')
+  #s.add_runtime_dependency('thinking-sphinx', '~> 2.0.8')
   # Syntactically Awesome Stylesheets
   s.add_runtime_dependency('sass-rails', '>= 3.1.0')
   # Bootstrap for Sass

@@ -11,7 +11,7 @@ require 'jquery-rails'
 # Select2 javascript library
 require 'select2-rails'
 # Permalinks:
-require 'stringex'
+#require 'stringex'
 # Hierarchical relationships in Activity and Relation:
 require 'ancestry'
 # Messages
@@ -44,8 +44,8 @@ require 'resque/server'
 # Modernizr.js library
 require 'modernizr-rails'
 # Sphinx search engine
-require 'thinking-sphinx'
-require 'thinking-sphinx/social_stream'
+#require 'thinking-sphinx'
+#require 'thinking-sphinx/social_stream'
 # Syntactically Awesome Stylesheets
 require 'sass-rails'
 # Bootstrap for Sass

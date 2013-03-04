@@ -29,7 +29,7 @@ class Actor < ActiveRecord::Base
   
   acts_as_messageable
 
-  acts_as_url :name, :url_attribute => :slug
+  #acts_as_url :name, :url_attribute => user.slug
   
   has_one :profile,
           dependent: :destroy,
