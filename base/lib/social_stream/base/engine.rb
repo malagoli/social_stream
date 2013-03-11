@@ -44,19 +44,9 @@ module SocialStream
         end
       end
 
-      initializer "social_stream-base.views.sidebar" do
-        SocialStream::Views::Sidebar.module_eval do
-          include SocialStream::Views::Sidebar::Base
-        end
-      end
-
       initializer "social_stream-base.avatars_for_rails" do
         AvatarsForRails.setup do |config|
-          config.avatarable_model = :actor
-          config.current_avatarable_object = :current_actor
-          config.avatarable_filters = [:authenticate_user!]
-          config.avatarable_styles = { :small   => '50x50>',
-                                       :profile => '119x119'}
+          config.controller_avatarable = :current_actor
         end
       end
 

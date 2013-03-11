@@ -5,14 +5,15 @@ describe 'profiles/show' do
                                   email: "test-user@test.com",
                                   language: 'en',
                                   to_param: "test",
-                                  logo: double(:logo, url: { profile: "" }),
-                                  actor: stub_model(Actor)
+                                  actor: stub_model(Actor),
+                                  suggestions: []
                                  })
              }
 
   let(:other_user) { stub_model(User, { name: "Other User",
                                         email: "other-user@test.com",
                                         language: 'en',
+                                        to_param: "other-user",
                                         contact_to!: stub_model(Contact, { id: 3 })
                                  })
              }
@@ -35,7 +36,10 @@ describe 'profiles/show' do
     before do
       view.stub(:current_subject).and_return(user)
       view.stub(:current_user).and_return(user)
+      view.stub(:profile_or_current_subject).and_return(user)
+      view.stub(:user_signed_in?).and_return(true)
       view.stub(:can?).and_return(true)
+      view.stub(:contact_to).and_return("")
     end
 
     it "should render" do
@@ -55,6 +59,8 @@ describe 'profiles/show' do
       before do
         view.stub(:current_subject).and_return(other_user)
         view.stub(:current_user).and_return(other_user)
+        view.stub(:profile_or_current_subject).and_return(other_user)
+        view.stub(:user_signed_in?).and_return(true)
         view.stub(:can?).and_return(false)
       end
 
@@ -70,6 +76,8 @@ describe 'profiles/show' do
       before do
         view.stub(:current_subject).and_return(other_user)
         view.stub(:current_user).and_return(other_user)
+        view.stub(:profile_or_current_subject).and_return(other_user)
+        view.stub(:user_signed_in?).and_return(true)
         view.stub(:can?).and_return(false)
       end
 
@@ -80,6 +88,5 @@ describe 'profiles/show' do
         rendered.should_not =~ /form.*edit_profile/
       end
     end
-
   end
 end

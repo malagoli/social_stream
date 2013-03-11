@@ -1,33 +1,32 @@
-<% content_for :title do %>
-    <%= t('user.other') %>
+<% content_for :title do%>
+  <%= t('user.other') %>
+<%end%>
+
+<section id="users">
+
+<% if user_signed_in? %>
+  <%= render partial: 'toolbar/home' %>
 <% end %>
 
-<% toolbar if user_signed_in? %>
-
-<% sidebar %>
-
-<%= location(t('browse') +": "+
-                     content_tag(:b, content_tag(:span, t('user.other'), :id => 'name_group')) + ", "+
-                     link_to(t('group.by'), groups_path)) %>
-
-
-<div id="my_conferences">
+<section class="users">
   <div id="contacts" class="block">
     <div class="search_field_wrapper">
-      <input type="text" value="Search by name" id="search_field" class="search_input"/>
-      <%= image_tag("btn/search.png", :size => "20x20", :id => "search_button") %>
+      <input type="text" value="Search by name" id="search_field" class="search_input" />
+      <%= image_tag("btn/search.png",:size=>"20x20",:id=>"search_button") %>
     </div>
 
     <div class="center">
       <%= link_to t('user.all_n', :count => User.count), users_path %> -
       <% for u in User.distinct_initials %>
-          <%= link_to u.initial.capitalize, {:letter => u.initial, :page => 1}, :class => "user_letter_link" %>
+        <%= link_to u.initial.capitalize,{:letter => u.initial,:page => 1},:class => "user_letter_link" %>
       <% end %>
     </div>
 
-    <%= render :partial => "users/index" %>
-
+    <%= render :partial => "users/index"%>
+  
   </div>
-</div>
+</section>
 
 
+  <%= render partial: 'sidebar/show' %>
+</section>

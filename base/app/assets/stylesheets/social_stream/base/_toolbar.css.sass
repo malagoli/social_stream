@@ -1,7 +1,4 @@
 #toolbar 
-  @include makeColumnoMargin(2, 0)
-  clear: both
-  display: table-cell
   h4
     margin-top: 24px
     border-bottom: 1px solid #ccc
@@ -11,8 +8,11 @@
     .contacts-more
       @extend .pull-right
       margin-top: 6px
-  .btn-blue
-    @extend .border-radius-5
+  .contact-button
+    .btn-group
+      button
+        @extend .btn-blue
+        @extend .border-radius-5
   .icon_navbar-message-blue,
   .icon_tool16-info
     margin-right: 4px
@@ -32,7 +32,8 @@
         a.active
           color: $blue
 
-#avatar_profile
+#avatar_profile,
+.logo_home
   font-size: 26px
   line-height: 49px
   text-overflow: ellipsis
@@ -45,6 +46,7 @@
       text-decoration: none
       color: $black
       text-aling: center
+ 
   .logo_caption
     font-size: 15px
     text-align: center

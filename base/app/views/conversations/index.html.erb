@@ -2,18 +2,16 @@
   <%=t('message.other')%>
 <% end %>
 
-<% toolbar :messages %>
+<section id="converstions">
 
-<div class="tabbable">
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#"><%= t('message.' + @box) %></a></li>
-  </ul>
-</div>
+  <%= render partial: 'toolbar/messages' %>
 
-<%= render :partial => 'index' %>
+  <%= render :partial => 'index' %>
 
-<%= javascript_tag do %>
-  $(function() {
-    SocialStream.Conversation.index();
-  });
-<% end %>
+  <%= javascript_tag do %>
+    $(function() {
+      SocialStream.Conversation.index();
+    });
+  <% end %>
+
+</section>

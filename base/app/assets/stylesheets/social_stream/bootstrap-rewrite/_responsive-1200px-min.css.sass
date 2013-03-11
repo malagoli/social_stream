@@ -1,0 +1,59 @@
+//
+// Responsive: Large desktop and up
+// --------------------------------------------------
+
+
+@media (min-width: 1200px)
+
+  #converstions
+    .toolbar-messages
+      @include grid-core-span(1, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    div.conversations
+      @include grid-core-span(11, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: left
+      margin-top: 26px
+      .conversation
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        .content_left
+          @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        .content_right
+          @include grid-core-span(9, $fluidGridColumnWidth, $fluidGridGutterWidth)
+  .conversation_full
+    @include grid-core-span(8, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    margin: 0 auto
+
+
+
+  #contacts
+    .contacts.tabbable
+      @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: left
+      margin-left: $gridGutterWidth1200
+
+
+
+  #explore-content
+    .sub-content-full
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    .sub-content-medium
+      @include grid-core-span(6, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      display: inline
+    .sub-content-medium-offset
+      @include grid-core-span(6, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      @include grid-core-offset(1, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      display: inline
+    .sub-content-small
+      @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      @include grid-core-offset(1, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      display: inline-block
+    .sub-content-small-offset
+      @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      @include grid-core-offset(1, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      display: inline-block
+    .sub-content-mini
+      @@include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      display: inline-block
+    .sub-content-mini-offset
+      @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      @include grid-core-offset(1, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      display: inline-block

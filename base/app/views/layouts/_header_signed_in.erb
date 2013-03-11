@@ -1,6 +1,8 @@
 <header class="navbar">
   <nav class="navbar-inner">
-    <%= link_to(image_tag('header-logo.png', class: "logo", :alt => t('site.name')), root_path) %>
+    <%= link_to(image_tag('header-logo.png', class: "logo hidden-phone hidden-tablet", :alt => t('site.name')), root_path) %>
+
+    <%= link_to(image_tag('logo-index.png', class: "logo hidden-desktop", :alt => t('site.name')), root_path) %>
     <div class="brand"></div>
 
     <!-- FIXME: search javascript functionality in 'layouts/search' -->
@@ -27,7 +29,13 @@
         <%= link_to(raw("<i class='icon_navbar-home'></i> "), root_path)%>
       </li>   
       <li>
-        <%= link_to(raw("<i class='icon_navbar-followers'></i> "), contacts_path) %>
+        <%= link_to(raw("<i class='icon_navbar-contacts'></i> "), contacts_path) %>
+      </li>
+      <li class="hidden-desktop">
+        <%= link_to(raw("<i class='icon_navbar-calendar'></i> "), contacts_path) %>
+      </li>
+      <li>
+        <%= link_to(raw("<i class='icon_navbar-resources'></i> "), documents_path) %>
       </li>
       <li>
         <%= link_to(raw("<i class='icon_navbar-message'></i> "), conversations_path) %> 
