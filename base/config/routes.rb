@@ -1,3 +1,4 @@
+=begin
 Rails.application.routes.draw do
   root :to => "frontpage#index"
   
@@ -113,3 +114,4 @@ Rails.application.routes.draw do
     mount Resque::Server, :at => "/resque"
   end
 end
+=end

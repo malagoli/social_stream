@@ -79,11 +79,11 @@ it:
     verb:
       follow:
         User:
-          title: "%{subject} added %{contact} as contact."
-          message: "%{name} added you as contact."
+          title: "%{subject} ha aggiunto %{contact} ai suoi contatti."
+          message: "%{name} ti ha aggiunto ai suoi contatti."
         Group:
-          title: "%{subject} added %{contact} as contact."
-          message: "%{name} added you as contact."
+          title: "%{subject} ha aggiunto %{contact} ai suoi contatti."
+          message: "%{name} ti ha aggiunto ai suoi contatti."
       like:
         User:
           title: "%{subject} is a fan of %{contact}."
@@ -99,7 +99,7 @@ it:
           message: "%{name} also added you as contact."
         Group:
           title: "%{subject} added %{contact} as contact."
-          message: "%{name} added you as contact."           
+          message: "%{name} ti ha aggiunto ai suoi contatti."
       post:
         title:
           other_wall: "%{sender} → %{receiver}"
@@ -380,29 +380,29 @@ it:
     trash: "Trash"
   notification:
     all_text: "Read the whole text at %{url}"
-    confirm: "Confirm %{sender} as contact?"
+    confirm: "Aggiungi %{sender} ai tui contatti?"
     default: "You have a new notification"
     destroy_sure: "Do you want to delete this notification?"
     fan: "%{sender} is now %{whose} fan."
     follow:
-      group: "%{sender} added %{who} as contact."
-      user: "%{sender} added %{who} as contact."
+      group: "%{sender} ha aggiunto %{who} ai suoi contatti."
+      user: "%{sender} ha aggiunto %{who} ai suoi contatti."
     hello: "Hi %{receiver},"
     like:
       group: "%{sender} likes %{whose} %{thing}." 
       user: "%{sender} likes %{whose} %{thing}."
-    look: "Take a look at %{sender}'s wall"
+    look: "Visualizza la pagina pubblica di %{sender}"
     makefriend:
-      group: "%{sender} also added %{who} as contact."
-      user: "%{sender} also added %{who} as contact."
+      group: "%{sender} ha aggiunto %{who} ai suoi contatti."
+      user: "Anche %{sender} ha aggiunto %{who} ai suoi contatti."
     one: "Notification"
     other: "Notifications"
     post:
       group: "%{title} -- by %{sender} in %{whose} wall"
       user: "%{title} -- by %{sender} in %{whose} wall"
-    read: "Mark as read"
-    read_all: "Mark all as read"
-    unread: "Mark as unread"
+    read: "Segna come letto"
+    read_all: "Segna tutti come già letti"
+    unread: "Segna come non letto"
     update:
       group: "%{sender} updated %{thing} in %{whose} wall."
       user: "%{sender} updated %{thing} in %{whose} wall."
@@ -411,10 +411,10 @@ it:
     watch_it: "Watch it!"
     who:
       group: "%{name}"
-      user: "you"
+      user: "te"
     whose: 
       group: "%{receiver}'s"
-      user: "your"
+      user: "il tuo"
   post:
     confirm_delete: "Delete post?"
     form:

@@ -1,4 +1,4 @@
-class MainActivityObjectProperties < ActiveRecord::Migration
+relation_permissionsclass MainActivityObjectProperties < ActiveRecord::Migration
   class APMigration < ActiveRecord::Base
     self.table_name = 'activity_object_properties'
     self.record_timestamps = false
