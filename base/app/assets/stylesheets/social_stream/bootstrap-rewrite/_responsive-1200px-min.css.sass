@@ -5,6 +5,53 @@
 
 @media (min-width: 1200px)
 
+  #home
+    margin-left: auto
+    margin-right: auto
+    #toolbar
+      width: 12.28571%
+      float: left
+      margin-left: 3.25%
+    .activities
+      @include grid-core-span(7, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: left
+      margin-left: 30px
+      margin-right: 30px
+
+      .wall_input
+        padding: 5px 13px
+    #sidebar
+      width: 21.85714%
+      float: left
+
+
+
+
+  #user,
+  #groups
+    #toolbar
+      @include grid-core-span(2, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: left
+      .user
+        .logo_home,
+        #avatar_profile
+      ul.buttons
+        margin-left: 0
+        li
+          a
+            @include grid-core-span(2, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    .activities
+      @include grid-core-span(7, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin-left: 2%
+      .wall_input
+        padding: 5px 13px
+    #sidebar
+      @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: right
+      
+
+
+
   #converstions
     .toolbar-messages
       @include grid-core-span(1, $fluidGridColumnWidth, $fluidGridGutterWidth)
@@ -23,13 +70,22 @@
     margin: 0 auto
 
 
-
   #contacts
-    .contacts.tabbable
-      @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    #toolbar
+      display: none
+    .contacts
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       float: left
-      margin-left: $gridGutterWidth1200
+      margin-left: 0
 
+
+  #documents
+    #toolbar
+      display: none
+    .documents
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: left
+      margin-left: 0
 
 
   #explore-content
