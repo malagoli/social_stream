@@ -66,6 +66,12 @@ class Contact < ActiveRecord::Base
                   joins("LEFT JOIN contacts AS inverse_contacts ON inverse_contacts.id = contacts.inverse_id").
                   where(arel_table[:inverse_id].eq(nil).or(arel_table.alias("inverse_contacts")[:ties_count].eq(0)))
 
+  scope :positive_replied, active.
+      positive.
+      not_reflexive.
+      joins("INNER JOIN contacts AS inverse_contacts ON inverse_contacts.id = contacts.inverse_id").
+      where(arel_table.alias("inverse_contacts")[:ties_count].eq(1))
+
   scope :related_by_param, lambda { |p|
     if p.present?
       joins(:ties).merge(Tie.where(:relation_id => p))
