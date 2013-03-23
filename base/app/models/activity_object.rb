@@ -48,8 +48,8 @@ class ActivityObject < ActiveRecord::Base
   #
   # Need to fix activity_object_spec_helper before activating it
   #
-  # validates_presence_of :author_id, :owner_id, :user_author_id, :unless => :acts_as_actor?
-  # after_create :create_post_activity, :unless => :acts_as_actor?
+  validates_presence_of :author_id, :owner_id, :user_author_id, :unless => :acts_as_actor?
+  after_create :create_post_activity, :unless => :acts_as_actor?
 
   scope :authored_by, lambda { |subject|
     joins(:received_actions).
