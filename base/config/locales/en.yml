@@ -520,13 +520,22 @@ en:
     title: "Privacy"
   relation_public:
     name: "Public"
+  repository:
+    filter: "filter"
+    title: "Repository"
+    order:
+      by: "Order by"
+      last_modified: "Last modified"
+      most_popular: "Most popular"
   representation:
     notice: "Your session has changed. Now you are acting on behalf of %{subject}. Use the top-right menu to return to your session"
     switch: "Switch session"
   required: "(*) These fields are required"
   search:
     all_results: "Search all %{subject} (%{count})"
-    at_least: "Write at least two characters"
+    at_least:
+      one: "Write at least %{count} character"
+      other: "Write at least %{count} characters"
     global: 
       name: "Global search"
       first_result:

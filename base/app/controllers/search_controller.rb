@@ -2,12 +2,11 @@ class SearchController < ApplicationController
   include ActionView::Helpers::SanitizeHelper
 
   RESULTS_SEARCH_PER_PAGE=16
-  MIN_QUERY=2
   def index
     @search_result =
-      if params[:q].blank? || params[:q].strip.size < MIN_QUERY
+      if params[:q].blank? || params[:q].strip.size < SocialStream::Search::MIN_QUERY
         []
-      elsif params[:mode].eql? "header_search"
+      elsif params[:mode] == "quick"
         search :quick
       else
         search :extended
@@ -16,8 +15,8 @@ class SearchController < ApplicationController
     respond_to do |format|
       format.html {
         if request.xhr?
-          if params[:mode] == "header_search"
-            render :partial => "header_search"
+          if params[:mode] == "quick"
+            render partial: "quick"
           else
             if params[:q].present?
               render partial: 'results'

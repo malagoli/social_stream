@@ -1,5 +1,7 @@
 <article id="new_file">
   <%= form_for(document) do |f| %>
+    <%= f.hidden_field :owner_id %>
+
     <div class="error">
       <ul>
         <h4>
@@ -12,14 +14,6 @@
         </li>
         <% end %>
       </ul>
-    </div>
-    
-    <div class="fileinputs">
-      <input type="file" class="file">
-        <div class="fakefile">
-          <input>
-          <img class="btn-input" src="assets/images/browse.png">
-        </div>
     </div>
 
     <section class="upload">

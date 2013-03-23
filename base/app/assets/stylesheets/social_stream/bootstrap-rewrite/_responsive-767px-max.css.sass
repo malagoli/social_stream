@@ -8,9 +8,11 @@
   header.navbar
     ul.nav
       margin-top: 13px
+      padding-left: 3%
       li
         a
-          padding: 0px 8px 10px !important
+          padding: 7px 8px 7px !important
+    
   footer
     z-index: 10
     background-color: $white
@@ -24,18 +26,15 @@
 
   #home
     #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
+      .send-message
+        margin-top: 10px
+        a
+          padding: 4px 27px
+          @include border-radius(5px)
         
     .activities
       @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       margin-left: 0
-      .wall_input
-        padding: 5px 13px
-
-    #sidebar
-      @extend .hidden-phone
-      @extend .hidden-tablet
 
 
 
@@ -45,38 +44,58 @@
     #toolbar
       @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       .user
-        @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
         float: left
+      .send-message
+        margin-top: 10px
+        a
+          padding: 4px 27px
+          @include border-radius(5px)
         .logo_home,
         #avatar_profile
           float: left
       ul.buttons
-        @include grid-core-span(6, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        @include grid-core-span(7, $fluidGridColumnWidth, $fluidGridGutterWidth)
         display: inline-block
         float: left
-        margin-left: 2%
+        margin-left: 8%
+        margin-top: 4px
+        background: $white
         li
+          margin-bottom: 7px
+          margin-left: 0px
           a
             @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
-      .contacts-toolbar
-        @extend .hidden-phone
+            &:hover
+              text-decoration: none
 
     .activities
       @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       margin-left: 0
-      .wall_input
-        padding: 5px 13px
-    #sidebar
-      @extend .hidden-phone
-      @extend .hidden-tablet
 
+
+
+
+  #profile
+    @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    margin-left: 0px
+
+    #profile-info
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: none
+      margin: 0px auto 0px
+      .tags,
+      .personal,
+      .comunication-info,
+      .experience,
+      .avatar
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        .update
+          @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
 
 
 
   #relation_customs
     #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
     h2
       background-color: #c4c4c4
       color: $white
@@ -108,6 +127,7 @@
         margin-top: 20px
 
 
+
   #settings
     @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
     border-left: 1px solid #c4c4c4
@@ -115,8 +135,6 @@
     border-bottom: 1px solid #c4c4c4
     border-radius: 10px
     #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
     h2
       background-color: #c4c4c4
       color: $white
@@ -131,48 +149,12 @@
 
 
 
+
   #conversation
     h2
-      @extend .hidden-phone
-      @extend .hidden-tablet
     input
       &[type="submit"]
-        @extend .btn-blue
         @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
-
-
-
-
-  #site_clients
-    #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
-
-
-
-
-  #new_site_client
-    #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
-    .new_site_client
-      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
-      h1
-        @extend .hidden-phone
-        @extend .hidden-tablet
-      #error_explanation
-        h2
-          font-size: 20px
-      #new_application
-        section
-          input
-            &[type="file"],
-            &[type="text"]
-              @include grid-core-span(11, $fluidGridColumnWidth, $fluidGridGutterWidth)
-              margin-left: 2.9%
-          textarea
-            @include grid-core-span(11, $fluidGridColumnWidth, $fluidGridGutterWidth)
-            margin-left: 2.9%
 
 
 
@@ -181,15 +163,19 @@
   #conversation,
   #new_message
     @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
-    .toolbar-home
+    margin-left: 0px
+    float: none
+    #toolbar
       @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       background-color: $white
-      @extend.border-radius-5
+      @include border-radius(5px)
       ul
         @include grid-core-span(8, $fluidGridColumnWidth, $fluidGridGutterWidth)
         height: 60px
         margin-left: auto
         margin-right: auto
+        margin-top: 13px
+        padding-left: 3%
         li
           @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
           display: inline
@@ -208,28 +194,32 @@
       .conversation
         @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
         .content_left
-          @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+          width: 60px
           margin-right: 13px
           margin-left: 0px
         .content_right
-          @include grid-core-span(9, $fluidGridColumnWidth, $fluidGridGutterWidth)
+          width: 80%
           .action
             float: right
-            margin: -42px -18px 0 0
+            margin: -20px -45px 0 0
+    
+  #conversation 
     .conversation_full
-      h3
-        float: left
-        width: 96%
-      .action
-        margin-top: 14px
-
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+  #new_message
+    label
+      margin-bottom: 0px
+      margin-top: 6px
+    .select2-container
+      width: 100%
+    input
+      &[type="text"]
+        width: 98%
+    
 
 
 
   #contacts
-    #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
     .contacts
       @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       float: left
@@ -250,9 +240,6 @@
 
 
   #documents
-    #toolbar
-      @extend .hidden-phone
-      @extend .hidden-tablet
     input
       &[type="text"]
         float: right
@@ -269,9 +256,7 @@
       h4
         font-size: 13px
         text-align: right
-    #presentation
-      @extend .hidden-phone
-      @extend .hidden-tablet
+    
     #sign_in
       @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
       margin-left: 12%
@@ -311,9 +296,6 @@
 
 
   #forgot-pass
-    .forgot-img
-      @extend .hidden-phone
-      @extend .hidden-tablet
     .forgot
       @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
       margin-left: 0
@@ -331,7 +313,33 @@
             &[type="submit"]
               float: right
 
-
+  #explore-content
+    .sub-content-medium,
+    .sub-content-full,
+    .sub-content-small,
+    .sub-content-mini,
+    .sub-content-medium-offset,
+    .sub-content-full-offset,
+    .sub-content-small-offset,
+    .sub-content-mini-offset
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin: 0px !important
+      margin-bottom: 20px !important
+      .content
+        width: 96%
+        margin-bottom: 10px
+        .case
+          margin: 3px 0 0 8px
+    .timeline
+      .media
+        .avatar
+          float: left
+    #search
+      margin-top: 0px
+      width: 100%
+      .input-xlarge
+        width: 70% 
+        margin-left: 3px
 
 // UP TO LANDSCAPE PHONE
 // ---------------------
@@ -342,11 +350,25 @@
     ul 
       li
         a 
-          padding: 10px 7px 10px
+          padding: 6px 8px 6px
 
   #home,
   #user,
   #group
+    #toolbar
+      .send-message
+        margin-top: 10px
+        a
+          padding: 4px 27px
+          @include border-radius(5px)
+      .contact-button
+        .btn-group
+          width: 100%
+          margin-top: 6px
+          .btn
+            width: 100% !important
+      ul.buttons
+        @include grid-core-span(6, $fluidGridColumnWidth, $fluidGridGutterWidth)
     .activities
       .wall_input
         #new_post
@@ -388,9 +410,9 @@
         .content_left
           margin-right: 2px
         .content_right 
-          .action
-            float: right
-            margin: -42px -18px 0 0
+          width: 69%
+          .actions
+            margin: -20px -45px 0 0
 
 
   .conversation_full
@@ -404,6 +426,11 @@
           float: left
     .action
       margin-top: -30px
+
+#new_message
+  .select2-container
+    width: 102%
+
 
 
   #frontpage
@@ -439,5 +466,8 @@
         input
           &[type="email"]
             width: 96%
-        .btn
-          @extend.btn-blue
+
+
+  #explore-content
+    #search
+      width: 99

@@ -43,7 +43,7 @@ es:
     mine: "Mis ficheros"
     name: "fichero"
     new:
-      link: "Añadir nuevo"
+      link: "Añadir fichero"
       title: "Nuevo fichero"
     new_activity:
       attach: "Adjuntar fichero"
@@ -68,12 +68,6 @@ es:
     title:
       one: "Imagen"
       other: "Imágenes"
-  repository:
-    title: "Ficheros"
-    order:
-      by: "Ordenar por"
-      last_modified: "Última modificación"
-      most_popular: "Popularidad"
   resource:
     all: "Todos los recursos"
     confirm_delete: "¿Borrar recursos?"

@@ -6,6 +6,8 @@ body
 
 
 #toolbar
+  @extend .hidden-phone
+  @extend .hidden-tablet
   @include grid-core-span(2, $fluidGridColumnWidth, $fluidGridGutterWidth)
   float: left
     
@@ -14,7 +16,8 @@ body
   float: left
   margin-left: 25px
 
-.activities
+.activities,
+#profile-info
   @include grid-core-span(7, $fluidGridColumnWidth, $fluidGridGutterWidth)
   float: left
   margin-left: 25px
@@ -24,5 +27,22 @@ body
     padding: 5px 13px
 
 #sidebar
+  @extend .hidden-phone
+  @extend .hidden-tablet
   width: 22.85714%
   float: left
+#converstions
+  @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+  .conversations
+    @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+#conversation
+  @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+  .conversation_full
+    @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    float: left
+#new_message
+  @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+  #conversation
+    @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    float: left
