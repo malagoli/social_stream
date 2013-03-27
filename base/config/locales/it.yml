@@ -394,7 +394,7 @@ it:
     look: "Visualizza la pagina pubblica di %{sender}"
     makefriend:
       group: "%{sender} ha aggiunto %{who} ai suoi contatti."
-      user: "Anche %{sender} ha aggiunto %{who} ai suoi contatti."
+      user: "Anche %{sender} %{who} ha aggiunto ai suoi contatti."
     one: "Notification"
     other: "Notifications"
     post:
@@ -411,7 +411,7 @@ it:
     watch_it: "Watch it!"
     who:
       group: "%{name}"
-      user: "te"
+      user: "ti"
     whose: 
       group: "%{receiver}'s"
       user: "il tuo"
