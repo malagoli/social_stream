@@ -1,16 +1,17 @@
 <%= div_for picture do %>
+    <%= '<bla>' %>
   <div class="thumb">
-    <%= link_to thumb_for(picture, "170x127#"),
-                download_document_path(picture) %>
+    <%= image_tag thumb_file_for(picture, "170x127#"), "data-modal-carousel-id" => "false", "data-modal-carousel-content" => "#{ thumb_for(picture, 500) }" %>
   </div>
 
   <div class="text">
     <h6>
       <%= picture.title %>
     </h6>
-    <div class="description">
-      <%= simple_format "#{ auto_link(picture.description) } #{ link_to t('details.msg'), picture, :class => 'view_more' }" %>
-    </div>
+
+    <%= render partial: 'objects/timeline_description',
+               object: picture,
+               as: :obj %>
   </div>
 <% end %>
 

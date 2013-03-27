@@ -7,14 +7,15 @@ body
 
 #toolbar
   @extend .hidden-phone
-  @extend .hidden-tablet
   @include grid-core-span(2, $fluidGridColumnWidth, $fluidGridGutterWidth)
   float: left
-    
-.contacts.tabbable
-  @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
-  float: left
-  margin-left: 25px
+#contacts
+  #toolbar
+    @extend .hidden-tablet
+  .contacts.tabbable
+    @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    float: left
+    margin-left: 25px
 
 .activities,
 #profile-info
@@ -31,6 +32,7 @@ body
   @extend .hidden-tablet
   width: 22.85714%
   float: left
+
 #converstions
   @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
   .conversations
@@ -46,3 +48,9 @@ body
   #conversation
     @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
     float: left
+#repository
+  @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+  float: left
+  #toolbar
+    @extend .hidden-phone
+    @extend .hidden-tablet

@@ -1,97 +1,68 @@
+//= require social_stream/callback
+//= require social_stream/audience
+//= require social_stream/comment
 //= require social_stream/pagination
+//= require social_stream/wall
 
 SocialStream.Timeline = (function(SS, $, undefined){
-  // FIXME: DRY!!
-  var showCallbacks = [];
-  var createCallbacks = [];
+  var callback = new SS.Callback();
 
-  var addShowCallback = function(callback){
-    showCallbacks.push(callback);
+  var initModalCarousel = function() {
+    var elements = $('.timeline [data-modal-carousel-id="false"]');
+
+    elements.each(addToModalCarousel);
+
+    elements.click(showModalCarousel);
   };
 
-  var addCreateCallback = function(callback){
-    createCallbacks.push(callback);
-  };
+  var addToModalCarousel = function(i, el) {
+    var timeline = $(el).closest('.timeline'),
+        carousel = $('#modal-carousel', timeline),
+        carouselInner = $('.carousel-inner', carousel),
+        carouselIndicators = $('.carousel-indicators', carousel),
+        inEl,
+        order;
 
-  var show = function(){
-    $.each(showCallbacks, function(i, callback){ callback(); });
-  };
+    inEl = $('<div/>', { class: 'item' }).
+      append($(el).attr('data-modal-carousel-content')).
+      appendTo(carouselInner);
 
-  var init = function() {
-    console.log("SocialStream.Timeline.init() is deprecated. Please, use SocialStream.Timeline.show()");
-    show();
-  };
+    order = carouselInner.children('div').length - 1;
 
-  var create = function(activityId){
-    $.each(createCallbacks, function(i, callback){ callback(activityId); });
-  };
-
-  var initPrivacyTooltips = function(activityId) {
-    var summaryId = '.audience';
-    var fullId = '.audience-tooltip';
-
-    if (activityId !== undefined) {
-      fullId = '#' + activityId + ' ' + fullId;
-      summaryId = '#' + activityId + ' ' + summaryId;
+    if (order === 0) {
+      inEl.addClass('active');
     }
 
-    $(fullId).hide();
-    $(summaryId).tooltip({
-      html: true,
-      trigger: 'click hover',
-      title: function(){
-        return $(this).siblings(fullId).html();
-      }
-    });
+    $('<li/>', { "data-target": "#modal-carousel", "data-slide-to" : order }).
+      appendTo(carouselIndicators);
+
+    $(el).attr('data-modal-carousel-id', order);
   };
 
-  var initComments = function(){
-    //if there are 4 or more commments we only show the last 2 and a link to show the rest
-    $(".timeline .comments").each(function(){
-      var comments = $(this).children(".child");
+  var showModalCarousel = function(event) {
+    var timeline = $(event.target).closest('.timeline');
 
-      //check if there are more than 3 comments
-      if (comments.size() > 3){
-        $(this).prepend("<div class='hidden_comments'><a href='#' onclick='SocialStream.Timeline.showAllComments(\"" + 
-                        $(this).attr('id') +"\"); return false;'>" + I18n.t('comment.view_all') + " (" +
-                        comments.size() + ")</a></div>");
-
-        comments.slice(0, comments.size() - 2).hide();
-      }
-    });
-
+    $('#modal-carousel', timeline).
+      carousel(parseInt($(event.target).attr('data-modal-carousel-id'), 10)).
+      carousel('pause');
+    $('.timeline-modal-carousel', timeline).modal('show');
   };
-
-  var showAllComments = function(id){
-    $("#"+id).children().show('show');
-    //and hide the hide_show_comments
-    $("#"+id).children(".hidden_comments").hide();
-  };
-
-  var resetWallInput = function(){
-    $('#post_text').val('');
-  };
-
 
   var initPagination = function() {
-    SS.Pagination.show(show);
+    SS.Pagination.show(callback.handlers.show);
   };
 
-  addShowCallback(initPrivacyTooltips);
-  addShowCallback(initComments);
-  addShowCallback(initPagination);
+  callback.register('show',
+                    SS.Audience.index,
+                    SS.Comment.index,
+                    initModalCarousel,
+                    initPagination);
 
-  addCreateCallback(initPrivacyTooltips);
-  addCreateCallback(resetWallInput);
+  callback.register('create',
+                    SS.Audience.index,
+                    SS.Comment.index,
+                    SS.Wall.new_);
 
-  return {
-    init: init,
-    addCreateCallback: addCreateCallback,
-    addInitCallback: addShowCallback,
-    addShowCallback: addShowCallback,
-    create: create,
-    initPrivacyTooltips: initPrivacyTooltips,
-    showAllComments: showAllComments,
-    show: show
-  };
+  return callback.extend({
+  });
 }) (SocialStream, jQuery);
