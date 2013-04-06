@@ -161,12 +161,12 @@ it:
       one: "Graph"
       empty: "We're sorry but you don't have any contacts yet. You can try the search box to look for somebody!"
     in_common:
-      one: "1 contact in common"
-      other: "%{count} contacts in common"
+      one: "1 contatto in comune"
+      other: "%{count} contatti in comune"
     more: "See more..."
     n:
-      one: "%{count} contact"
-      other: "%{count} contacts"
+      one: "%{count} conattto"
+      other: "%{count} contatti in comune"
     new:
       button:
         zero: "Add"
