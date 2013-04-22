@@ -57,7 +57,7 @@ module SocialStream
       end
 
       config.to_prepare do
-        ApplicationController.rescue_handlers += [["CanCan::AccessDenied", :rescue_from_access_denied]]
+        #ApplicationController.rescue_handlers += [["CanCan::AccessDenied", :rescue_from_access_denied]]
       end
     end
   end
