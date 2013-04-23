@@ -254,13 +254,20 @@ class Activity < ActiveRecord::Base
   
   def notificable?
     is_root? or ['post','update'].include?(root.verb)
+
+
   end
 
   def notify
+    #if object type is in the list of disabled notification
+    if SocialStream.disableNotificationFor
+      return false if SocialStream.disableNotificationFor.include? direct_object.class.name
+    end
+
     return true unless notificable?
     #Avaible verbs: follow, like, make-friend, post, update, join
 
-    if direct_object.is_a? Comment
+      if direct_object.is_a? Comment
       participants.each do |p|
         p.notify(notification_subject, "Youre not supposed to see this", self) unless p == sender
       end

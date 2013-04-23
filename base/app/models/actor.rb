@@ -155,6 +155,9 @@ class Actor < ActiveRecord::Base
   def mailboxer_email(object)
     #If actor has disabled the emails, return nil.
     return nil if !notify_by_email
+
+
+
     #If actor has enabled the emails and has email
     return "#{name} <#{email}>" if email.present?
     #If actor is a Group, has enabled emails but no mail we return the highest_rank ones.
