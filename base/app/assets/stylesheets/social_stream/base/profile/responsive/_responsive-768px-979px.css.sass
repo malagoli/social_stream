@@ -1,0 +1,22 @@
+//
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+
+@media (min-width: 768px) and (max-width: 979px)
+
+
+  #profile
+    @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+    #profile-info
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: left !important
+      margin: 0 0 0 2.5% !important
+      width: 80% !important
+      .tags,
+      .personal,
+      .comunication-info,
+      .experience,
+      .avatar
+        width: 97.5% !important

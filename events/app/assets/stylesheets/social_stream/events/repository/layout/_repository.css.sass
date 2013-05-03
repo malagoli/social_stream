@@ -1,0 +1,31 @@
+/////////////////////////////////////// EXPLORE SEARCH
+///////////// 
+
+#repository
+  .event
+    width: 240px
+    float: left
+    margin-left: 19px
+    min-height: 81px
+    margin-bottom: 14px
+    .avatar
+      float: left
+      min-height: 55px
+      a
+        .icon_50-event
+          @include size (53px, 50px)
+          background-image: url("icons/files_ico-50.png")
+    .data
+      .name
+        margin-top: 11px
+        @include ellipsis
+        width: 73%
+      .date  
+        font-size: 11px
+      .date,
+      .frequency
+        @include ellipsis
+        width: 73%
+      .frequency
+        color: #888
+        font-size: 12px

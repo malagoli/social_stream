@@ -1,0 +1,122 @@
+.toolbar-profile
+  .toolbar_menu
+    ul
+      background: #f9f9f9
+      li
+        @include btn-primary
+        @include border-radius(5px)
+        padding: 4px 7px
+        margin-bottom: 5px
+        a
+          @include ellipsis
+        .icon_tool16-info
+          background-position: -192px -110px
+        .icon_navbar-resources
+          background-position: -175px -12px
+        .icon_navbar-message
+          background-position: -55px -11px
+        &:hover
+          .icon_tool16-info
+            background-position: -192px -235px
+          .icon_navbar-resources
+            background-position: -175px -38px
+          .icon_navbar-message
+            background-position: -55px -38px
+          a
+            color: $white
+            @include transition(color 1s)
+            background: transparent
+
+        a
+          &:hover
+            color: $white
+.toolbar-conversations
+  nav
+    .nav
+      li
+        a
+          color: $grayLighter
+          background: transparent
+          &:hover
+            color: $blue
+            background: transparent
+            .icon_message-new
+              background-position: -9px -10px
+            .icon_message-inbox
+              background-position: -129px -10px
+            .icon_message-sentbox
+              background-position: -68px -10px
+            .icon_message-trash
+              background-position: -188px -10px
+          .icon_message-new.active
+            background-position: -9px -10px
+          .icon_message-inbox.active
+            background-position: -129px -10px
+          .icon_message-sentbox.active
+            background-position: -68px -10px
+          .icon_message-trash.active
+            background-position: -188px -10px
+        a.active
+          color: $blue
+
+
+
+#toolbar
+  h5
+    position: relative
+    margin-top: 7px
+    margin-bottom: 16px
+    font-size: 16px
+    @include ellipsis
+    a
+      color: #666
+      &:hover
+        text-decoration: none
+        color: #444
+  .contact-button
+    @include btn-add
+
+  
+
+  .contacts-toolbar,
+  section.groups
+    @extend .hidden-phone
+    h4
+      margin-bottom: 0px
+      font-family: $sansFontFamilyLight
+      border-bottom: 1px solid #ddd
+    ul
+      border-right: 1px solid #ddd
+      img
+        @include border-radius(5px)
+    .contacts-more,
+    .groups-more
+      text-align: right
+
+
+
+
+  #avatar_profile,
+  .logo_home
+    font-size: 26px
+    line-height: 49px
+    @include ellipsis
+    img
+      @include border-radius(5px)
+    .subject-name-phone
+      position: relative
+      margin-top: 7px
+      margin-bottom: 16px
+      font-size: 16px
+      @include ellipsis
+      a
+        color: #666
+        &:hover
+          text-decoration: none
+          color: #444
+
+    .logo_caption
+      font-size: 15px
+      text-align: center
+
+

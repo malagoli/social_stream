@@ -1,0 +1,80 @@
+//
+// Responsive: Landscape phone to desktop/tablet
+// --------------------------------------------------
+
+
+@media (max-width: 767px) 
+
+  #home,
+  #user,
+  #groups
+    .timeline
+      .event,
+      .link
+        .date
+          width: 70px
+          margin-left: 0
+        .details
+          display: inline-block !important
+          width: 100%
+          .text 
+            width: 100%
+            margin-left: 0px
+          
+
+  #calendar 
+    @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    margin-left: 0
+  #events
+
+    td
+      .fc-button
+        padding: 3.5% !important
+        font-size: 12px !important
+      .fc-header-space
+        padding-left: 0px
+    .fc-header-center
+      h2
+        font-size: 17.5px
+    #calendar 
+      .fc-day-number
+        min-height: 32px
+
+
+
+        
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px)
+  
+  #home,
+  #user,
+  #group
+    .activities
+      .timeline
+        .avatar
+          float: left
+        .event,
+        .link
+          .date
+            width: 70px
+            margin-left: 0
+            .day,
+            .month
+              font-weight: bold
+              font-size: 15px
+          .poster
+            @include hidden-phone
+        
+
+        
+  
+  
+  #sidebarContent
+    #days
+      tr
+        td
+          font-size: 18px
+          padding: 3px 7px
+

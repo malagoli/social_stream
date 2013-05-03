@@ -1,15 +1,21 @@
 <header class="navbar">
   <nav class="navbar-inner">
-    <%= link_to(image_tag('header-logo.png', class: "logo hidden-phone hidden-tablet", :alt => t('site.name')), root_path) %>
-
-    <%= link_to(image_tag('logo-index.png', class: "logo hidden-desktop", :alt => t('site.name')), root_path) %>
+    <%= render partial: 'layouts/logo_in' %>
     <div class="brand"></div>
-
     <!-- FIXME: search javascript functionality in 'layouts/search' -->
 
-    <div class="search-mobile">
-      <i class='icon_tool16-searcher'></i>
-    </div>
+    
+      <%= form_tag search_path, method: 'get', id: "search-box", class: "navbar-search pull-left search-mobile" do %>
+        <%= text_field_tag :q, nil, autocomplete: :off, class: "search-query input-small icon_tool16-searcher", placeholder: t('search.name'), "data-min_query" => SocialStream::Search::MIN_QUERY %>
+      <% end %>
+      <%= javascript_tag do %>
+        $(function() {
+          SocialStream.SearchHeader.show();
+        });
+      <% end %>
+
+  
+    
     <div class="search-nav hidden-phone">
       <%= form_tag search_path, method: 'get', class: "navbar-search pull-left" do %>
         <%= text_field_tag :q, nil, autocomplete: :off, class: 'search-query input-small', placeholder: t('search.name'), "data-min_query" => SocialStream::Search::MIN_QUERY %>
@@ -37,7 +43,7 @@
     <div class="explore-nav hidden-phone">
       <%= link_to explore_path do %>
     
-        <%= t('or explore') %>
+        <%= t('explore.or') %>
       <% end %>
 
     </div>
@@ -50,25 +56,25 @@
       </li>
       <li>
         <%= link_to root_path do %>
-          <i class='icon_navbar-home <%= current_header_icon_class(:home) %>'></i>
+          <i class='icon_navbar-home <%= current_header_icon_class(:home) %>' title="<%= t 'header.icon.home' %>"></i>
         <% end %>
       </li>   
       <li>
         <%= link_to contacts_path do %>
-          <i class='icon_navbar-contacts <%= current_header_icon_class(:contacts) %>'></i>
+          <i class='icon_navbar-contacts <%= current_header_icon_class(:contacts) %>' title="<%= t 'header.icon.contacts' %>"></i>
         <% end %>
       </li>
     
       <% if SocialStream.repository_models.present? %>
       <li>
       <%= link_to repository_path do %>
-        <i class='icon_navbar-resources <%= current_header_icon_class(:resources) %>'></i>
+        <i class='icon_navbar-resources <%= current_header_icon_class(:resources) %>' title="<%= t 'header.icon.repository' %>" ></i>
       <% end %>
       </li>
       <% end %>
       <li>
         <%= link_to conversations_path do %> 
-          <i class='icon_navbar-message <%= current_header_icon_class(:messages) %>'></i>
+          <i class='icon_navbar-message <%= current_header_icon_class(:messages) %>' title="<%= t 'header.icon.messages' %>"></i>
         <% end %>
       </li>              
       <li> 

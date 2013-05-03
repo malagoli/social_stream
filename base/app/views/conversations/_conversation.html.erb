@@ -12,6 +12,9 @@
       <h5>
         <%= link_to truncate_name(conversation.last_sender.name), conversation.last_sender.subject %>
       </h5>
+      <div class="date">
+        <%= t('time.ago', :time => time_ago_in_words(conversation.updated_at)) %>
+      </div>
     </header>
 
   </div>
@@ -24,7 +27,7 @@
 
     <% unless @box.eql?'trash' %>
       <div class="action">
-        <% link_to(image_tag('btn/btn_read.png', :alt => t('mailboxer.mark_as_read'), :title => t('mailboxer.mark_as_read'))) %>
+      
         <%= link_to(image_tag('cancel.png', :alt => t('mailboxer.delete'), :title => t('mailboxer.delete')),
                     conversation_path(conversation, :location => @box,
                                                     :box => @box,
@@ -39,12 +42,5 @@
     <div class="briefing">
       <%= raw(truncate(strip_tags(conversation.last_message.body), :length => 50)) %>
     </div>
-
-    <div class="date">
-      <%= t('time.ago', :time => time_ago_in_words(conversation.updated_at)) %>
-    </div>
-
-    <div class="clearfloat">
-    </div> 
   </div>
 <% end %>

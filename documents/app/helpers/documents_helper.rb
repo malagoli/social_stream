@@ -9,11 +9,7 @@ module DocumentsHelper
 
     format = style.respond_to?('[]') && style[:format] || document.format
 
-    if style
-      polymorphic_path document, format: format, style: size
-    else
-      icon document, size
-    end
+    polymorphic_path(document, format: format, style: size)
   end
 
   # Return the right icon based on {#document}'s mime type
@@ -28,7 +24,7 @@ module DocumentsHelper
     elsif SocialStream::Documents.icon_mime_types[:types].include?(document.mime_type_type_sym)
       document.mime_type_type_sym
     else
-      SocialStream.icon_mime_types[:default]
+      SocialStream::Documents.icon_mime_types[:default]
     end
   end
   

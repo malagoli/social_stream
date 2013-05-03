@@ -1,0 +1,100 @@
+//
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+
+@media (min-width: 768px) and (max-width: 979px)
+
+  header.navbar
+    ul
+      margin-top: 13px
+
+  header 
+    .navbar-inner 
+      .search-nav
+        margin: 0px 0 0 43px
+
+  footer
+    @extend .hidden-tablet
+
+
+
+  #home
+    #toolbar
+      @extend .hidden-tablet
+    .activities
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin-left: 0
+      .wall_input
+        padding: 5px 13px
+
+
+
+
+  #user,
+  #group
+    #toolbar
+      ul.buttons
+        margin-left: 0
+        li
+          a
+            @include grid-core-span(2, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    .activities
+      @include grid-core-span(10, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin-left: 2%
+      .wall_input
+        padding: 5px 13px
+    #sidebar
+      @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      #suggestions,
+      #pendings
+        .avatar
+          width: 45px
+          margin-left: -5px
+        .data
+          width: 127px
+          margin-left: 3px
+
+  #profile
+    @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+    #profile-info
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: none
+      margin: 0px auto 0px
+      .tags,
+      .personal,
+      .comunication-info,
+      .experience,
+      .avatar
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        .update
+          @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+          
+
+
+  .relation_customs
+    #permissions
+      @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+
+
+  #site_clients
+    #toolbar
+      background-color: black
+
+
+
+
+    #sidebar
+      @include grid-core-span(3, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      #suggestions,
+      #pendings
+        .avatar
+          width: 45px
+          margin-left: -5px
+        .data
+          width: 143px
+          margin: 0px
+
+ 

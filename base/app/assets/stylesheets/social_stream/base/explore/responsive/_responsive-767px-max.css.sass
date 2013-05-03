@@ -1,0 +1,77 @@
+//
+// Responsive: Landscape phone to desktop/tablet
+// --------------------------------------------------
+
+
+@media (max-width: 767px)
+
+  #explore-content
+    .sub-content-medium,
+    .sub-content-full,
+    .sub-content-small,
+    .sub-content-mini,
+    .sub-content-medium-offset,
+    .sub-content-full-offset,
+    .sub-content-small-offset,
+    .sub-content-mini-offset
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin: 0px !important
+      margin-bottom: 20px !important
+
+      .content
+        width: 96%
+        margin-bottom: 10px
+        .case
+          margin: 3px 0 0 8px
+
+
+    #timeline
+      .timeline
+        .root
+          .avatar
+            float: left
+          .media-heading
+            font-size: 14px
+          .media-body
+            width: 75%
+            .thumb
+              float: none
+            .details
+              width: 70%
+  
+
+
+    #search
+      margin-top: 0px
+      width: 100%
+      .input-xlarge
+        width: 68% !important
+        margin-left: 3px
+        font-size: 15px
+
+
+        
+
+
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px)
+
+  #explore-header
+    .btn
+      padding-left: 4px
+      padding-right: 4px
+
+  #explore-content
+    #search
+      margin-top: 0px
+      width: 100%
+      .input-xlarge
+        width: 68% !important
+        margin-left: 3px
+        font-size: 15px
+
+
+
+

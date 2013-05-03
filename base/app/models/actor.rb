@@ -131,7 +131,7 @@ class Actor < ActiveRecord::Base
 
   scope :subject_type, lambda { |t|
     if t.present?
-      where(subject_type: t)
+      where(subject_type: t.classify)
     end
   }
 
@@ -350,6 +350,10 @@ class Actor < ActiveRecord::Base
   def action_to!(activity_object)
     action_to(activity_object) ||
       sent_actions.create!(:activity_object => ActivityObject.normalize(activity_object))
+  end
+
+  def sent_active_contact_count
+    sent_contacts.active.count
   end
 
   def sent_active_contact_ids

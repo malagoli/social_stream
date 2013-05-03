@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   # Slug generation
   #s.add_runtime_dependency('stringex', '~> 1.5.1')
   # Avatar attachments
-  s.add_runtime_dependency('avatars_for_rails', '~> 1.0.2')
+  s.add_runtime_dependency('avatars_for_rails', '~> 1.0.4')
   # jQuery
   s.add_runtime_dependency('jquery-rails', '>= 1.0.9')
   # Select2 javascript library
@@ -57,13 +57,11 @@ Gem::Specification.new do |s|
   # Syntactically Awesome Stylesheets
   s.add_runtime_dependency('sass-rails', '>= 3.1.0')
   # Bootstrap for Sass
-  s.add_runtime_dependency('bootstrap-sass', '~> 2.2.2.0')
+  s.add_runtime_dependency('bootstrap-sass', '~> 2.3.1.0')
   # Customize ERB views
   s.add_runtime_dependency('deface', '~> 0.9.1')
   # Autolink text blocks
   s.add_runtime_dependency('rails_autolink', '~> 1.0.4')
-  # SocialCheesecake
-  s.add_runtime_dependency('social_cheesecake','~> 0.5.0')
   # I18n-js
   s.add_runtime_dependency('i18n-js','~>2.1.2')
   # Strong Parameters

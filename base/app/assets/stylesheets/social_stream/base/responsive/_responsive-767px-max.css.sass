@@ -1,0 +1,178 @@
+//
+// Responsive: Landscape phone to desktop/tablet
+// --------------------------------------------------
+
+
+@media (max-width: 767px)
+
+  header.navbar
+    ul.nav
+      margin-top: 13px
+      padding-left: 3%
+      li
+        a
+          padding: 7px 8px 7px !important
+    
+  footer
+    @extend .hidden-phone
+
+
+  #home
+    #toolbar
+      @extend .hidden-phone
+      .send-message
+        margin-top: 10px
+        a
+          padding: 4px 27px
+          @include border-radius(5px)
+        
+    .activities
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin-left: 0
+      margin-top: 20px
+
+
+
+
+  #user,
+  #group,
+  #contacts
+    #toolbar
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      .user
+        float: left
+      .send-message
+        margin-top: 10px
+        a
+          padding: 4px 27px
+          @include border-radius(5px)
+        .logo_home,
+        #avatar_profile
+          float: left
+      ul.buttons
+        @include grid-core-span(7, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        display: inline-block
+        float: left
+        margin-left: 8%
+        margin-top: 4px
+        background: $white
+        li
+          margin-bottom: 7px
+          margin-left: 0px
+          a
+            @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
+            &:hover
+              text-decoration: none
+
+    .activities
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      margin-left: 0
+
+
+
+  #profile
+    @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    margin-left: 0px
+
+    #profile-info
+      @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      float: none
+      margin: 0px auto 0px
+      .tags,
+      .personal,
+      .comunication-info,
+      .experience,
+      .avatar
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        .update
+          @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+
+
+  #relation_customs
+    #toolbar
+    h2
+      background-color: #c4c4c4
+      font-weight: bold
+      padding-left: 10px
+      border-top-left-radius: 10px
+      border-top-right-radius: 10px
+      margin-bottom: 0px !important
+    .relation_list
+      @include grid-core-span(5, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      border-left: (1px solid #c4c4c4)
+      margin-left: 0
+      padding-left: 30px
+      #new_relation
+        margin-top: 20px
+    #permissions
+      @include grid-core-span(6, $fluidGridColumnWidth, $fluidGridGutterWidth)
+      border-right: (1px solid #c4c4c4)
+      float: right
+      margin-left: 10px
+      .postit
+        background-image: none
+        width: auto
+        height: auto
+        padding: 38px 19px 0 0
+    .relation_list,
+    #permissions
+      h4
+        margin-top: 20px
+
+
+
+  #documents
+    input
+      &[type="text"]
+        float: right
+
+
+
+
+
+
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px)
+
+  header.navbar
+    ul 
+      li
+        a 
+          padding: 6px 8px 6px
+
+  #home,
+  #user,
+  #group
+    #toolbar
+      .send-message
+        margin-top: 10px
+        a
+          padding: 4px 27px
+          @include border-radius(5px)
+      ul.buttons
+        @include grid-core-span(6, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    
+    .activities
+      .wall_input
+        #new_post
+          input
+            &[type="text"] 
+              padding-left: 5%
+              padding-right: 5%
+              width: 89%
+          .wall_input-actions
+            .btn-group
+              margin-top: 0px
+      .timeline
+        .avatar
+          float: left
+
+
+
+  #relation_customs
+    .relation_list
+      padding-left: 10px
+

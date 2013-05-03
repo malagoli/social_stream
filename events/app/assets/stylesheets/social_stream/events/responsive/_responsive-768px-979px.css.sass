@@ -1,0 +1,30 @@
+//
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+
+@media (min-width: 768px) and (max-width: 979px) 
+  #user
+    .activities
+      .timeline
+        .event
+          .details 
+            margin-left: 10px
+            @include grid-core-span(4, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    #sidebar
+      .calendar
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+        #days tr td
+          padding-left: 2.5%
+          padding-right: 2.5%
+      #suggestions,
+      #pendings
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+ 
+
+  #explore-content
+    .timeline
+      .root
+        .media-body
+          width: 84%

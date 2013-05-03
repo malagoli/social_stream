@@ -1,0 +1,90 @@
+#frontpage,
+#new_session
+  @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+  .explanation
+    @extend .hidden-phone
+    width: 54.14286%
+    float: left
+    margin-left: 4%
+    margin-top: 28px
+    height: 110px
+    padding: 26px 0px 69px 36px
+    clear: both
+    .lite
+      margin: 3px 0px 23px 0
+    .btn
+      clear: both
+      @include btn-secundary
+      padding: 7px 30px
+      margin-right: 21px
+
+  #presentation
+    @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+    @include centered
+    float: left
+    .characteristics
+      width: 27%
+      margin-left: 2.9%
+      &:first-child
+        margin-left: 4% 
+
+  #sign_in
+    width: 27%
+    float: right
+    display: inline-block
+    padding: 5px 15px
+    margin: 27px 2% 0 14px
+    h3
+      margin-top: 0px
+      margin-bottom: 0px
+    #remember
+      margin-bottom: 10px 
+      display: inline !important
+      label
+        display: inline-block
+        margin-top: 6px
+    input
+      &[type="submit"]
+        float: right
+        display: inline
+        margin-top: 10px
+    .soften
+      clear: both
+
+
+
+
+
+  #presentation
+    display: block
+    clear: both
+    margin-top: 35px
+    .characteristics
+      float: left
+      padding: 10px
+      margin: 10px 0 0 20px
+      header
+        margin: 5px 0
+      p
+        padding: 9px 0px 5px 0px
+
+
+
+#sign_in,
+#forgot-pass,
+#registration
+  .options
+    a
+      border-right: 1px solid #ccc
+      padding-right: 6px
+      &:last-child
+        border-right: none
+
+#header_search_form
+  margin-bottom: 0px
+
+
+
+#login_data
+  @include clearfix

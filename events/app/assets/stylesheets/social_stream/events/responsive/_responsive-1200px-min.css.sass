@@ -1,0 +1,34 @@
+//
+// Responsive: Large desktop and up
+// --------------------------------------------------
+
+
+@media (min-width: 1200px)
+  #home,
+  #user,
+  #grups
+    .activities
+      .timeline
+        .event
+          .details
+            width: 52%
+
+
+    #sidebar
+      #month_top, 
+      #month_bottom
+        font-size: 17px
+      #days
+        font-size: 15px
+        line-height: 22px
+
+      #suggestions,
+      #pendings
+        @include grid-core-span(12, $fluidGridColumnWidth, $fluidGridGutterWidth)
+
+  #explore-content
+    .timeline
+      .root
+        .media-body
+          .details
+            width: 79%

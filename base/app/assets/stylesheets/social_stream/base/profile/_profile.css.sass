@@ -1,0 +1,49 @@
+@import 'avatars_for_rails'
+
+#profile
+  #profile-info
+    h2
+      @include colorfont-big-size
+      margin-bottom: 10px
+      .colorfont-overlay
+      top: 20px !important
+    .tags,
+    .personal,
+    .comunication-info,
+    .experience,
+    .avatar
+      input,
+      textarea
+        background-color: #f9f9f9
+      .accordion-body
+        @include gradient-vertical-three-colors($startColor: #e2e2e2, $midColor: #ededed, $colorStop: 3%, $endColor: #f1f1f1)
+        width: 100%
+      span
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5)
+        color: #999
+        p
+          background-color: none
+          padding-top: 20px
+          padding-left: 1px
+
+      form.edit_profile
+        input
+          &[type="submit"]
+            @include btn-secundary
+    .avatar
+      form.edit_actor
+        background-color: #f9f9f9
+        padding-left: 10px
+        padding-top: 14px
+        input
+          &[type="file"]
+    section.accordion-group
+      border: none
+
+
+    
+    h5
+      color: $grayLighter
+      font-size: 17px
+      font-weight: bold
+    

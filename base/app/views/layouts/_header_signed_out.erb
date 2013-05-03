@@ -1,5 +1,5 @@
-<header class="headerFront">
-  <%= link_to(image_tag('header-logo-index.png', class: "logo", :alt => t('site.name')), root_path) %>
+<header class="headerFront <%= header_logo_class %>">
+  <%= render partial: 'layouts/logo_out' %>
   <div class="brand">
   </div>
   <% unless params[:controller].eql? 'devise/sessions' and params[:action].eql? 'new' %> 

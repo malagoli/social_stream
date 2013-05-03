@@ -1,0 +1,159 @@
+/////////////////////////////////////// EXPLORE SEARCH
+///////////// 
+
+
+  .menuv 
+    width: auto
+    margin-left: none
+    padding: 10px 0 10px 10px
+    hr
+      margin: 7px 5px 0px -5px
+    ul 
+      margin: 7px 0 0 18px
+      li 
+        margin-left: 1px
+        padding: 0px 0px
+        ol 
+          padding: 0px 0px
+          margin: -7px 0 13px 2px
+          li
+            margin-top: -7px 0 8px 0
+            padding-bottom: 0px
+
+    .advanced 
+      margin: 8px 0 0 0px !important
+      display: block
+      padding: 3px 0px
+
+
+
+#tags
+  margin-top: 20px
+  .search-result 
+    .tags-list
+      display: inline
+      width: 889px
+      float: left
+      ul
+        @include makeColumn(2, 0)
+
+
+
+#search
+  h4
+    margin: 0 0 10px
+    line-height: 50px !important
+  .btn-group
+    padding-bottom: 10px
+    margin-bottom: 10px
+    width: 100%
+    padding-left: 5px
+    .btn 
+      width: 11% !important
+      margin: 0 auto 0
+  select
+    display: none
+  .input-xlarge
+    width: 37% !important
+    height: 34px
+    margin-bottom: 0px
+    padding-left: 23px
+    clear: both
+    display: inline
+    margin-left: 5px
+  input
+    &[type="submit"]
+      height: 40px
+
+#explore-header
+  .btn
+    @include btn-primary
+    font-size: 16px
+
+/////////////////////////////////////// EXPLORE SEARCH RESULT
+///////////// in events, linkser, post, comments
+
+#explore-content
+  #search
+    #search-results
+      min-height: 360px
+
+      .contact
+        width: 240px
+        float: left
+        margin-left: 19px
+        min-height: 76px
+        margin-bottom: 14px
+
+        .avatar
+          float: left
+          margin-left: 0px
+          width: 50px
+          display: inline
+          margin-top: 10px
+          img
+            width: 45px 
+            vertical-align: top
+
+        .data
+          float: left
+          margin-left: 0px
+          width: 175px
+          display: inline-block
+          margin-top: 11px
+        .info
+          @include ellipsis
+          z-index: 1
+          padding-left: 2%
+
+
+    .event
+      width: 240px
+      float: left
+      margin-left: 19px
+      min-height: 81px
+      margin-bottom: 14px
+      .avatar
+        @include makeColumnoMargin(1, 0)
+        display: inline
+        margin-top: 14px
+      .data
+        @include makeColumnoMargin(2, 0)
+        display: inline-block
+
+
+    .link
+      width: 240px
+      float: left
+      margin-left: 19px
+      min-height: 76px
+      margin-bottom: 14px
+      .thumb
+        float: left
+        margin-left: 0px
+        width: 60px
+        display: inline
+        margin-top: 14px
+      .brifing
+        float: left
+        margin-left: 0px
+        width: 175px
+        display: inline-block
+        h5
+          margin-bottom: 0px
+        .author
+          a
+            width: 85%
+
+
+    .post,
+    .comment
+      width: 224px
+      float: left
+      margin-left: 19px
+      min-height: 50px
+      margin-bottom: 14px
+      background-color: $white
+      padding: 13px 8px
+      p
+        @include ellipsis

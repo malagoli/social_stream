@@ -2,52 +2,44 @@
   <div class="user">
     <%= render partial: 'toolbar/logo',
                locals: { subject: subject } %>
+
     <% if current_subject.present? && subject != current_subject %>
-    
-    <% end %>
     <div class="contact-button">
-      <%= contact_to subject %>
-
-      <%= javascript_tag do %>
-        $(function() {
-          SocialStream.Contact.show();
-        });
-      <% end %>
+      <%= contact_button subject %>
     </div>
+    <% end %>
 
-    <%= content_for :toolbar_menu do %>
-    
   </div>
-  <ul class="buttons">
+
+  <nav class="toolbar_menu">
+    <ul class="nav">
     <li>
       <%= link_to [ subject, :profile ] do  %>
         <i class='icon_tool16-info'></i> <%= t 'menu.information' %>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to [ subject, :profile ] do  %>
-        <i class='icon_navbar-contacts'></i> <%= t 'menu.contacts' %>
       <% end %>
     </li>
 
     <% if SocialStream.repository_models.present? %>
       <li>
         <%= link_to [ subject, :repository ] do %>
-          <%= image_tag 'icons/resources.png' %> <%= t 'repository.title' %>
+          <i class='icon_navbar-resources'></i> <%= t 'repository.title' %>
         <% end %>
       </li>
     <% end %>
-    <li>
-      <%= link_to new_message_path(:receiver => subject.slug) do %>
-        <%= t 'send message' %>
-      <% end %>
-    </li>
+
+    <% if subject != current_subject %>
+      <li>
+        <%= link_to new_message_path(receiver: subject.slug) do %>
+          <i class='icon_navbar-message'></i> <%= t 'mailboxer.send' %>
+        <% end %>
+      </li>
+    <% end %>
 
     <div class="base_items"/>
-  </ul>
-<% end %>
+    </ul>
+  </nav>
 
-<%= render partial: 'toolbar/menu' %>
+  <%= render partial: 'toolbar/contacts', locals: { subject: subject } %>
 
-<%= render partial: 'toolbar/contacts', locals: { subject: subject } %>
+  <%= render partial: 'toolbar/groups', locals: { subject: subject } %>
 </section>

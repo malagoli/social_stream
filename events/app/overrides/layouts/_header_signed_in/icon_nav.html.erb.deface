@@ -3,6 +3,6 @@
 
 <li class="event">
   <%= link_to events_path do %>
-    <i class="icon_navbar-calendar <%= current_header_icon_class(:events) %>"></i> 
+    <i class="icon_navbar-calendar <%= current_header_icon_class(:events) %>" title="<%= t 'header.icon.calendar' %>"></i> 
   <% end %>
 </li>

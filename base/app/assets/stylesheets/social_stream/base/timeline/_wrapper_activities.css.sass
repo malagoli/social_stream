@@ -4,11 +4,14 @@
   @include grid-fluid(12, 0)
 
 .activities
+  header h2
+    @include colorfont-big-size
   .wall_input
     padding: 5px 13px
     background-color: $grayLighter
     margin-bottom: 20px
     @include border-radius (5px)
+    @include box-shadow (rgba(0, 0, 0, .15) 0 1px 3px)
     label
       font-size: 14px
     input
@@ -16,7 +19,7 @@
       display: block
       &[type="submit"]
         @include size (auto, auto)
-        @extend .btn-blue-invert
+        @include btn-secundary
         padding: 3px 11px 4px 11px
         margin-top: 0px
         float: right
@@ -26,26 +29,48 @@
         display: inline
       &[type="text"]
         padding: 1% 2%
+    #link_preview
+      .link
+        margin-left: 0px
+
+    .thumbnail
+      @include center-block()
+      width: 43%
+      float: left
+      img
+        max-height: 134px
+        float: right
+    .info
+      width: 53%
+      display: inline-block
+      margin-left: 1%
+      .description
+        textarea
+          min-height: 80px
+
     .wall_input-actions
       margin-top: 10px
+      .form-privacy
+        .icon_tool16-private
+          background-position: -10px -87px
+        .icon_tool16-public
+          background-position: -40px -87px
+        &:hover
+          .icon_tool16-private
+            background-position: -10px -211px
+          .icon_tool16-public
+            background-position: -40px -211px
+
     .new_document
       display: inline
       padding: 1px 6px 4px 6px
-    .btn-group,
-    open
+    .form-privacy
       display: inline-block
-      .dropdown-menu
-        li
-          margin-left: 0px
-          padding-left: 7px
-          a
-            padding: 0px !important
-            label
-              margin-left: 0px
-              padding: 0px 16px 0px 0px!important
-              &:hover
-                background: $blue
-                color: $white
+      @include btn-add
+      .btn-group
+        button
+          padding: 4px 12px 4px 8px
+      
 
 #post_text
   margin-bottom: 0px

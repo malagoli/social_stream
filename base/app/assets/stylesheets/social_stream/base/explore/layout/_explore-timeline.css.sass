@@ -1,0 +1,145 @@
+#timeline
+  .timeline
+    .media
+      margin: 0 0 20px
+      border-bottom: 1px solid #efefef
+      padding-bottom: 13px
+      .media-heading
+        margin-top: 4px
+      .avatar
+        @include border-radius (5px)
+        img
+          width: 60px
+      .media-body
+        color: $grayLight
+        word-wrap: break-word
+        width: 90%
+        .media-heading
+          font-size: 14px
+          a
+            text-decoration: none
+          .x
+            display: inline
+            font-size: 12px
+            color: $black
+            float: right
+            a
+              float: right
+              text-decoration: none
+              color: $grayLight
+              &:hover
+                color: $red
+        .objects
+          word-wrap: break-word
+          min-height: 22px
+          .thumb
+            float: left
+            width: auto
+            margin-right: 10px
+            img
+              width: 170px
+            img.video
+              z-index: 20
+              position: absolute
+          .text
+            font-size: 12px
+            float: left
+            h6
+              font-size: 14px 
+              margin: 1px 0 3px
+              @include ellipsis
+          .description
+            margin: 0 0 4px
+            p
+              a
+                display: block
+
+        .actions
+          width: 100%
+          display: inline-block
+          margin-bottom: 10px
+          .post_time_ago
+            display: inline-block
+            font-size: 11px
+            color: $gray
+          .to_comment,
+          .to_like
+            display: inline-block
+            font-size: 12px
+            margin-left: 5px
+          .audience
+            display: inline-block
+            font-size: 12px
+            margin-left: 7px
+            
+          .tooltip
+            @include opacity (90)
+            @include border-radius (5px)
+            width: 28%
+            background: $gray
+            color: whitesmoke
+            margin-top: 26px 0px 0px 53px
+            .audience_logo
+              display: inline-block
+              width: auto
+              padding: 4px
+              img
+                @include border-radius (5px)
+          
+          textarea
+            resize: none
+            width: 100%
+       
+        
+        div.new_comment
+          margin-top: 10px
+
+          height: auto
+          width: 100%
+          float: right
+          .avatar
+            float: right
+            width: 7%
+          form.new_comment
+            float: right
+            margin-right: 4px
+   
+            display: inline-block
+            width: 83.8%
+            margin-top: 3px
+            input
+              &[type="submit"]
+                float: right
+
+        
+        .comments
+          .child
+            @include border-radius (5px)
+            background: #efefef
+            padding: 9px 6px 11px 12px
+            margin-bottom: 19px
+            a
+              .avatar
+                width: 40px !important
+            .actions
+            margin-bottom: 0px
+
+          .hidden_comments
+            text-align: right
+            margin: 0px 2px -6px 0 
+            a
+              font-size: 11px
+              text-decoration: none
+              color: $gray
+              &:hover
+                color: $linkColor
+
+      .likes
+        font-size: 12px
+
+
+  .btn-group
+    @include clearfix
+    button
+      @include makeColumn(2, 0)
+      width: 157px

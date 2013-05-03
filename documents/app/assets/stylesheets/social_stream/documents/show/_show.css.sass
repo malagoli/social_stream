@@ -1,11 +1,9 @@
-.picture
+.picture,
+.audio,
+.video,
+.documents
   .central
-    @include grid-core-span(7, $fluidGridColumnWidth, $fluidGridGutterWidth)
-    float: left 
-    margin-left: 30px
-    padding-bottom: 40px
     .show
-      padding: 10px
       @include border-radius(10px)
       border: 1px solid #f7f7f7
       @include gradient-radial ($innerColor: #666, $outerColor: #333)
@@ -14,29 +12,67 @@
         color: $white
         font-size: 15px
       .actions
-        width: 11%
         border: 1px solid #333
         @include border-radius (3px)
-        margin: 10px auto -7px
         border-bottom-color: #444
         background-color: rgba(50, 50, 50, 0.3)
+      .video
+        .video-container
+          @include centered
+          width: 100%
+          .jp-type-single
+            .jp-player
+              width: 100%
+              background-color: #222 !important
+            .jp-interface
+              min-height: 60px
+              .jp.controls
+                .jp-play,
+                .jp-pause
+                  left: -2px !important
+                  top: 21px !important
+                .jp-stop
+                  left: 38px !important
+                  top: 28px !important
+                .jp-mute,
+                .jp-unmute
+                  left: 73px !important
+                  top: 35px !important
+              .jp-volume-bar
+                left: 95px !important
+                top: 40px !important
+              .jp-current-time
+                left: 137px !important
+                  top: 32px !important
+
     .tabbable
-      margin-top: 10px
       .tab-content
-        overflow: initial
- 
+        .media
+          background-color: $white
+          border-bottom: 1px solid #ddd
+          border-left: 1px solid #ddd
+          &:last-child
+            border-bottom: none
+          .actions
+            .post_time_ago
+              color: $gray
+
+            .tooltip
+              @include opacity (90)
+              @include border-radius (5px)
+              background: $gray
+              color: whitesmoke
+              .audience_logo
+                img
+                  @include border-radius (5px)
+
   .details
     @extend .hidden-phone
-    width: 21.8%
-    float: left 
-    margin-left: 30px
     h4
-      margin-bottom: 5px
       color: #999
       font-size: 15px
     .tabbable
       ul
-        margin-bottom: 0px
         li.active
           a
             background-color: #f3f3f3 
@@ -44,61 +80,22 @@
       color: $blue
       border-left: 1px solid #dddddd
       background-color: #f3f3f3
-      padding-bottom: 20px
-      padding-top: 10px
 
 
 #document-info
   .counters
     color: $grayLight
-    margin-left: 10px
     .counter
-      display: inline
       color: #00C3FF
       font-sixe: 15px
-  .description,
-  .tags,
-  .autor,
-  .dates
-    margin-left: 10px
-    .data
-    .file_size
-      .details  
 
-
-#picture_description
-  height: 200px
  
-#document-edit
-  margin-left: 8px
-  .fcbk
-    margin-bottom: 20px
-  input
-    &[type="submit"]
-      float: right
-
 
 #comments
-  .new_comment
-    clear: both
-    @include border-bottom-radius (5px) 
-    border: 1px solid #f9f9f9
-    width: 88%
-    margin-left: 66px
-    background-color: #f9f9f9
-    .avatar
-      float: left
-      margin-left: -8px
-      margin-right: 6px
-      margin-top: -2px
-      img
-        margin-left: 9px
-        width: 50px !important 
-    form .new_comment
-      clear: none
-      border: none
-      background-color: transparent 
-      width: 88%
-      margin-left: 66px
-      margin-top: 0px
+  div.new_comment
+    form.new_comment
+      input
+        &[type="submit"]
+          @include btn-secundary
+
      
