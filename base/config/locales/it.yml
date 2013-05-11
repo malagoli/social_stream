@@ -386,7 +386,7 @@ it:
     fan: "%{sender} is now %{whose} fan."
     follow:
       group: "%{sender} ha aggiunto %{who} ai suoi contatti."
-      user: "%{sender} ha aggiunto %{who} ai suoi contatti."
+      user: "%{sender} vuole aggiungerti ai suoi contatti."
     hello: "Hi %{receiver},"
     like:
       group: "%{sender} likes %{whose} %{thing}." 
@@ -394,7 +394,7 @@ it:
     look: "Visualizza la pagina pubblica di %{sender}"
     makefriend:
       group: "%{sender} ha aggiunto %{who} ai suoi contatti."
-      user: "Anche %{sender} %{who} ha aggiunto ai suoi contatti."
+      user: "Anche %{sender} ti ha aggiunto ai suoi contatti."
     one: "Notification"
     other: "Notifications"
     post:
