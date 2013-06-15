@@ -31,9 +31,11 @@ Gem::Specification.new do |s|
   # Slug generation
   #s.add_runtime_dependency('stringex', '~> 1.5.1')
   # Avatar attachments
-  s.add_runtime_dependency('avatars_for_rails', '~> 1.0.4')
+  s.add_runtime_dependency('avatars_for_rails', '~> 1.1.1')
   # jQuery
-  s.add_runtime_dependency('jquery-rails', '>= 1.0.9')
+  s.add_runtime_dependency('jquery-rails', '>= 3.0.0')
+  # jQuery UI
+  s.add_runtime_dependency('jquery-ui-rails', '>= 4.0.3')
   # Select2 javascript library
   s.add_runtime_dependency('select2-rails', '~> 3.3.0')
   # Authorization
@@ -65,7 +67,7 @@ Gem::Specification.new do |s|
   # I18n-js
   s.add_runtime_dependency('i18n-js','~>2.1.2')
   # Strong Parameters
-  s.add_runtime_dependency('strong_parameters','~> 0.1.5')
+  s.add_runtime_dependency('strong_parameters','~> 0.2.1')
   # Flash messages
   s.add_runtime_dependency('flashy','~> 0.0.1')
 

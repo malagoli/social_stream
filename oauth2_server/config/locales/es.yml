@@ -10,8 +10,15 @@ es:
         name: Nombre
         secret: Client Secret
         url: URL
+  helpers:
+    submit:
+      site_client:
+        create: "Siguiente"
+        update: "Guardar"
   permission:
     public_info: Acceder a tu información pública
+  relation_admin:
+    name: "Administrador de Sitio"
   site:
     client:
       added: Sitios añadidos

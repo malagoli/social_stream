@@ -7,16 +7,16 @@
       color: #ccc
 
 
-#oauth2_server 
+#site_client
   h1
     text-align: left
-  .content
-    @include gradient-vertical($startColor: #ccc, $endColor: #f9f9f9)
-    a
-      img
-        background-color: #f9f9f9
-    .media
-    .media-body
+  .site_client
+    @include principal-box   
+    .content
+      a
+        img
+          background-color: #f9f9f9
+      
       .name,
       .url,
       .users
@@ -28,10 +28,7 @@
           color: $gray
           &:hover
             color: $blue
-      .result,
-      .client_secret
-        background-color: #f9f9f9
-        @include border-radius(5px)
+      .result
         font-size: 15px
 
       .client_secret
@@ -39,7 +36,7 @@
         overflow-y: hidden
         overflow-x: scroll
 
-    .users
-      font-size: 16px
-      span
-        color: $blue
+      .users
+        font-size: 16px
+        span
+          color: $blue

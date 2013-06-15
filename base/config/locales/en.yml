@@ -224,8 +224,7 @@ en:
     passwords:
       confirm: Confirm password
       forgot: Forgot your password?
-      instructions: 'Type the email address bound to your account and we will sent
-        you instructions to change it:'
+      instructions: 'Enter your email address and we will send you instructions to change it:'
       update: Change your password
   dropdown:
     notifications: Notifications
@@ -267,7 +266,7 @@ en:
       other: '%{count} followers'
   forgot_password: Forgot you password?
   frontpage:
-    main_title: Social Stream, the core for building distributed social network websites.
+    main_title: Social Stream, a framework for building distributed social network websites.
     presentation:
       modular:
         header: Modular
@@ -438,7 +437,7 @@ en:
     confirm_delete: Delete post?
     form:
       title: Post
-    input: Share you thoughts here!
+    input: Share your thoughts here!
     name: post
     one: a post
     other: posts
@@ -605,12 +604,16 @@ en:
     one: Settings
     password_change:
       briefing: Change your password
-    success: Your settings where correctly changed
+    success: Your settings were correctly changed
   share: Share
   sign_in: Sign in
   sign_out: Sign out
   sign_up: Sign up
   site:
+    current:
+      description: A framework for building distributed social network websites
+      keywords: social stream,social software,framework,ruby on rails
+      title: Social Stream
     name: Social Stream
   subject:
     this_is_you: This is you!
