@@ -19,7 +19,8 @@ Gem::Specification.new do |s|
   # Rails
   s.add_runtime_dependency('rails')
   # Rails Engine Decorators
-  s.add_runtime_dependency('rails_engine_decorators')
+  # Removed to test rail4 integration
+  #s.add_runtime_dependency('rails_engine_decorators')
   # Activity and Relation hierarchies
   s.add_runtime_dependency('ancestry', '~> 1.2.3')
   # SQL foreign keys
