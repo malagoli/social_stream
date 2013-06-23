@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   # SQL foreign keys
   s.add_runtime_dependency('foreigner')
   # Authentication
-  s.add_runtime_dependency('devise', '~> 2.2.3')
+  s.add_runtime_dependency('devise')
   # CRUD controllers
   s.add_runtime_dependency('inherited_resources', '~> 1.4.0')
   # Slug generation
