@@ -4,12 +4,13 @@ class Site::Client < Site
   before_validation :set_secret,
                     on: :create
 
-  after_create :set_owner
+  after_create :set_manager
 
-  scope :administered_by, lambda { |actor|
-    joins(actor: :sent_permissions).
+  scope :managed_by, lambda { |actor|
+    select("DISTINCT sites.*").
+      joins(actor: :sent_permissions).
       merge(Contact.received_by(actor)).
-      merge(Permission.where(action: 'update', object: nil))
+      merge(Permission.where(action: 'manage', object: nil))
   }
 
   %w{ url callback_url secret }.each do |m|
@@ -26,16 +27,22 @@ class Site::Client < Site
     id
   end
 
+  # Generate a new OAuth secret for this site client
+  def refresh_secret!
+    set_secret
+    save!
+  end
+
   private
 
   def set_secret
     self.secret = SecureRandom.hex(64)
   end
 
-  def set_owner
+  def set_manager
     c = sent_contacts.create! receiver_id: author.id,
                               user_author: author
 
-    c.relation_ids = [ ::Relation::Owner.instance.id ]
+    c.relation_ids = [ ::Relation::Manager.instance.id ]
   end
 end

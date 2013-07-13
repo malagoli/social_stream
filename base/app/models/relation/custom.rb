@@ -2,7 +2,7 @@
 # of relations is created for him. Afterwards, the {SocialStream::Models::Subject subject}
 # can customize them and adapt them to his own preferences.
 #
-# Default relations are defined at config/relations.yml
+# Default relations are defined at config/initializers/social_stream.rb
 #
 class Relation::Custom < Relation
   # This is weird. We must call #inspect before has_ancestry for Relation::Custom
@@ -15,10 +15,17 @@ class Relation::Custom < Relation
   validates_presence_of :name, :actor_id
   validates_uniqueness_of :name, :scope => :actor_id
 
+  scope :actor, lambda { |a|
+    where(:actor_id => Actor.normalize_id(a))
+  }
+
+  before_create :initialize_sender_type
+
   class << self
     def defaults_for(actor)
       subject_type = actor.subject.class.to_s.underscore
-      cfg_rels = SocialStream.custom_relations[subject_type]
+      cfg_rels = SocialStream.custom_relations[subject_type] ||
+        SocialStream.custom_relations[subject_type.to_sym]
 
       if cfg_rels.nil?
         raise "Undefined relations for subject type #{ subject_type }. Please, add an entry to config/initializers/social_stream.rb"
@@ -50,45 +57,23 @@ class Relation::Custom < Relation
 
       rels.values
     end
-
-    # A relation in the top of a strength hierarchy
-    def strongest
-      roots
-    end
   end
 
-  # Compare two relations
-  def <=> rel
-    return -1 if rel.is_a?(Public)
-
-    if ancestor_ids.include?(rel.id)
-      1
-    elsif rel.ancestor_ids.include?(id)
-      -1
-    else
-      0
-    end
+  # The subject who defined of this relation
+  def subject
+    actor.subject
   end
 
-  # Other relations below in the same hierarchy that this relation
-  def weaker
-    descendants
+  def available_permissions
+    Permission.available(subject)
   end
 
-  # Relations below or at the same level of this relation
-  def weaker_or_equal
-    subtree
-  end
+  private
 
-  # Other relations above in the same hierarchy that this relation
-  def stronger
-    ancestors
-  end
+  # Before create callback
+  def initialize_sender_type
+    return if actor.blank?
 
-  # Relations above or at the same level of this relation
-  def stronger_or_equal
-    path
+    self.sender_type = actor.subject_type
   end
 end
-
-ActiveSupport.run_load_hooks(:relation_custom, Relation::Custom)

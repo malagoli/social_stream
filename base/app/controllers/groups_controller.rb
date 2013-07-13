@@ -1,11 +1,8 @@
 class GroupsController < ApplicationController
   include SocialStream::Controllers::Subjects
+  include SocialStream::Controllers::Authorship
 
   before_filter :authenticate_user!, :except => [ :index, :show ]
-
-  # Set group founder to current_subject
-  # Must do before authorization
-  before_filter :set_founder, :only => [ :new, :create ]
 
   load_and_authorize_resource
 
@@ -18,7 +15,7 @@ class GroupsController < ApplicationController
   def create
     create! do |success, failure|
       success.html {
-        self.current_subject = @group
+        self.current_subject = resource
         redirect_to :home
       }
     end
@@ -37,15 +34,7 @@ class GroupsController < ApplicationController
 
   # Overwrite resource method to support slug
   # See InheritedResources::BaseHelpers#resource
-  def resource
-    @group ||= end_of_association_chain.find_by_slug!(params[:id])
-  end
-
-  private
-
-  def set_founder
-    params[:group]                  ||= {}
-    params[:group][:author_id]      ||= current_subject.try(:actor_id)
-    params[:group][:user_author_id] ||= current_user.try(:actor_id)
+  def method_for_find
+    :find_by_slug!
   end
 end

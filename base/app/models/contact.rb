@@ -48,6 +48,14 @@ class Contact < ActiveRecord::Base
           or(arel_table[:receiver_id].eq(Actor.normalize_id(a))))
   }
 
+  scope :in_direction_with, lambda { |subject, d = 'sent'|
+    if d == 'received'
+      received_by(subject).joins(:sender)
+    else
+      sent_by(subject).joins(:receiver)
+    end
+  }
+
   scope :recent, order("contacts.created_at DESC")
 
   scope :active, where(arel_table[:ties_count].gt(0))
@@ -76,6 +84,15 @@ class Contact < ActiveRecord::Base
     if p.present?
       joins(:ties).merge(Tie.where(:relation_id => p))
     end
+  }
+
+  scope :index, lambda { |params|
+    in_direction_with(params[:subject], params[:d]).
+      positive.
+      merge(Actor.subject_type(params[:type])).
+      merge(Actor.name_search(params[:q])).
+      related_by_param(params[:relation]).
+      page(params[:page])
   }
 
   validates_presence_of :sender_id, :receiver_id
@@ -171,7 +188,7 @@ class Contact < ActiveRecord::Base
 
   # Return an array of options suitable for the contact add button
   def options_for_select
-    sender.relation_customs.map{ |r| [ r.name, r.id ] }
+    sender.relations_for_button.map{ |r| [ r.name, r.id ] }
   end
 
   private

@@ -65,6 +65,7 @@ en:
         other: '%{count} groups'
     sending: Sending
     share: Share
+    share_loading: Sharing...
     stream:
       atom_title: Activity Stream from %{subject}
       title:
@@ -158,8 +159,8 @@ en:
     error_count:
       one: '1 error prohibited this contact from being saved:'
       other: '%{count} errors prohibited this contact from being saved:'
-    follow: Follow
-    following: Following
+    follow: Add
+    following: Added
     graph:
       one: Graph
       empty: We're sorry but you don't have any contacts yet. You can try the search
@@ -175,7 +176,7 @@ en:
         zero: Add
         one: '%{count} role'
         other: '%{count} roles'
-      link: + Add contact
+      link: Add contact
       title: Add %{name} to your contacts
       menu: Add contact
       submit: Add Contact
@@ -201,7 +202,7 @@ en:
       all: All
     type:
       new: + New type
-    unfollow: Unfollow
+    unfollow: Remove
     view_all: View all...
   copyright: 2013 Copyright - All rights reserved
   counter:
@@ -224,7 +225,8 @@ en:
     passwords:
       confirm: Confirm password
       forgot: Forgot your password?
-      instructions: 'Enter your email address and we will send you instructions to change it:'
+      instructions: 'Enter your email address and we will send you instructions to
+        change it:'
       update: Change your password
   dropdown:
     notifications: Notifications
@@ -266,7 +268,8 @@ en:
       other: '%{count} followers'
   forgot_password: Forgot you password?
   frontpage:
-    main_title: Social Stream, a framework for building distributed social network websites.
+    main_title: Social Stream, a framework for building distributed social network
+      websites.
     presentation:
       modular:
         header: Modular
@@ -444,9 +447,6 @@ en:
     title:
       one: Post
       other: Posts
-  preposition:
-    and: and
-    true: 'on'
   profile:
     one: Profile
     age: Age
@@ -507,8 +507,8 @@ en:
             nil:
               positive: Activities of the contacts at %{relation} WILL APPEAR in your
                 home wall
-              negative: Activities of the contacts at %{relation} WILL APPEAR in your
-                home wall
+              negative: Activities of the contacts at %{relation} WILL NOT APPEAR
+                in your home wall
           read:
             activity:
               positive: They WILL BE ABLE to read posts in your wall, except those
@@ -540,6 +540,8 @@ en:
       title: Roles
     new: + New role
     title: Privacy
+  relation_owner:
+    name: Owner
   relation_public:
     name: Public
   repository:

@@ -1,34 +1,32 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user!, except: [ :index ]
-  before_filter :exclude_reflexive, :except => [ :index, :suggestion, :pending ]
+  load_and_authorize_resource except: [ :index, :create, :suggestion, :pending ]
+  before_filter :exclude_reflexive,  except: [ :index, :create, :suggestion, :pending ]
+  before_filter :create_filled_params, only: [ :create ]
+
+  helper_method :current_subject_contacts_to
 
   def index
-    subject = profile_or_current_subject!
-
+    params[:subject] = subject = profile_or_current_subject!
     params[:d]    ||= 'sent'
     params[:type] ||= subject.class.contact_index_models.first.to_s
 
-    @contacts = Contact
-
-    @contacts =
-    if params[:d] == 'received'
-      @contacts.received_by(subject).joins(:sender)
-    else
-      @contacts.sent_by(subject).joins(:receiver)
-    end
-
-    @contacts =
-      @contacts.
-        positive.
-        merge(Actor.subject_type(params[:type])).
-        merge(Actor.name_search(params[:q])).
-        related_by_param(params[:relation]).
-        page(params[:page])
+    @contacts = Contact.index(params)
 
     respond_to do |format|
-      format.html { render @contacts if request.xhr? }
+      format.html { render current_subject_contacts_to(@contacts) if request.xhr? }
       format.json { render json: @contacts.map(&:receiver), helper: self }
     end
+  end
+
+  def create
+    relation_ids = params[:relations].map(&:to_i)
+
+    params[:actors].split(',').each do |a|
+      current_subject.contact_to!(a).relation_ids = relation_ids
+    end
+
+    redirect_to action: :index
   end
 
   def update
@@ -87,21 +85,36 @@ class ContactsController < ApplicationController
     end
   end
 
+  protected
+
+  def current_subject_contacts_to(contacts)
+    contacts.map{ |c|
+      current_actor.blank? || c.sender == current_actor ?
+        c :
+        current_actor.contact_to!(c.receiver)
+    }
+  end
+
   private
 
   def exclude_reflexive
-    @contact = current_subject.sent_contacts.find params[:id]
-
     if @contact.reflexive?
       redirect_to home_path
     end
   end
 
-  def total_contacts
-    @total_contacts ||=
-      Contact.sent_by(current_subject).
-              joins(:receiver).merge(Actor.alphabetic).
-              positive.
-              select("actors.name")
+  def create_filled_params
+    errors = []
+
+    %w( actors relations ).each do |p|
+      if params[p].blank?
+        errors << "#{ p } cannot be blank"
+      end
+    end
+
+    if errors.present?
+      flash[:error] = errors.to_sentence
+      redirect_to action: :index
+    end
   end
 end

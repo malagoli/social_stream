@@ -1,57 +1,36 @@
 class Site::ClientsController < ApplicationController
+  include SocialStream::Controllers::Subjects
+  include SocialStream::Controllers::Authorship
+
   before_filter :authenticate_user!
 
-  before_filter :set_author_ids, only: [ :create, :update ]
-
-  def index
-    @developer_clients = current_subject.developer_site_clients
-  end
-
-  def show
-    @client = Site::Client.find params[:id]
-  end
-
-  def new
-    @client = Site::Client.new
-  end
+  load_and_authorize_resource
 
   def create
-    @client = Site::Client.new params[:site_client]
-
-    if @client.save
-      respond_to do |format|
-        format.html { redirect_to @client }
-      end
-    else
-      respond_to do |format|
-        format.html { render :new }
-      end
+    create! do |success, error|
+      success.html { 
+        redirect_to polymorphic_path(resource, action: :edit, step: 2)
+      }
+      error.html { render :new }
     end
   end
 
-  def edit
-    @client = Site::Client.find params[:id]
-  end
+  # Refresh the site client token
+  def update_secret
+    resource.refresh_secret!
 
-  def update
-    @client = Site::Client.find params[:id]
-
-    if @client.update_attributes params[:client]
-      respond_to do |format|
-        format.html { redirect_to @client }
-      end
-    else
-      respond_to do |format|
-        format.html { render :edit }
-      end
+    respond_to do |format|
+      format.json { render json: { secret: resource.secret } }
     end
   end
 
-  private
+  def destroy
+    destroy! { :home }
+  end
 
-  def set_author_ids
-    params[:site_client][:author_id]      = current_subject.actor_id
-    params[:site_client][:user_author_id] = current_user.actor_id
-    params[:site_client][:owner_id]       = current_subject.actor_id
+  protected
+
+  def collection
+    current_subject.managed_site_clients
   end
 end

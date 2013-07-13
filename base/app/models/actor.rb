@@ -132,6 +132,12 @@ class Actor < ActiveRecord::Base
     joins(:received_contacts).merge(Contact.active.sent_by(a))
   }
 
+  scope :not_contacted_from, lambda { |a|
+    if a.present?
+      where(arel_table[:id].not_in(a.sent_active_contact_ids + [a.id]))
+    end
+  }
+
   scope :followed, joins(:activity_object).merge(ActivityObject.followed)
 
   scope :followed_by, lambda { |a|
@@ -215,6 +221,20 @@ class Actor < ActiveRecord::Base
     relations.joins(:relation_permissions => :permission).where('permissions.action' => 'notify')
   end
 
+  # The relations that will appear in privacy forms
+  #
+  # They usually include {Relation::Custom} but may also include other system-defined
+  # relations that are not editable but appear in add contact buttons
+  def relations_list
+    Relation.system_list(subject) + relation_customs
+  end
+
+  # The relations offered in the "Add contact" button when subjects
+  # add new contacts
+  def relations_for_button
+    relations_list
+  end
+
   # All the {Actor Actors} this one has ties with:
   # 
   #   actor.contact_actors #=> array of actors that sent and receive ties from actor
@@ -282,7 +302,7 @@ class Actor < ActiveRecord::Base
     if options[:relations].present?
       as = as.merge(Tie.related_by(options[:relations]))
     else
-      as = as.merge(Relation.where(:type => ['Relation::Custom', 'Relation::Public']))
+      as = as.merge(Relation.positive)
     end
     
     as
@@ -317,7 +337,7 @@ class Actor < ActiveRecord::Base
   # Return a contact to subject. Create it if it does not exist
   def contact_to!(subject)
     contact_to(subject) ||
-      sent_contacts.create!(:receiver => Actor.normalize(subject))
+      sent_contacts.create!(receiver_id: Actor.normalize_id(subject))
   end
 
   # The {Contact} of this {Actor} to self (totally close!)
@@ -423,11 +443,21 @@ class Actor < ActiveRecord::Base
 
   # The default {Relation Relations} for sharing an {Activity} owned
   # by this {Actor}
+  #
+  # Activities are shared with all the contacts by default.
+  #
+  # You can change this behaviour with a decorator, overwriting this method.
+  # For example, if you want the activities shared publicly by default, create
+  # a decorator in app/decorators/actor_decorator.rb with
+  #   Actor.class_eval do
+  #     def activity_relations
+  #       [ Relation::Public.instance ]
+  #     end
+  #   end
+  #
   def activity_relations
-    SocialStream.relation_model == :custom ?
-      relations.
-        allowing('read', 'activity') :
-      [ Relation::Public.instance ]
+    relations.
+      allowing('read', 'activity')
   end
 
   # The ids of the default {Relation Relations} for sharing an {Activity}
